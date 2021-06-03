@@ -2,7 +2,7 @@
 
 ## Submission Instructions
 1. Send your GitHub username to Dave Rodriguez to request write-access to this repository. You'll be provided access to a branch named `challenge-response/<your-name>`.
-2. Fork this GitHub repository to your Github account.
+2. Fork this repository to your GitHub account.
 3. Review the specification below and submit any questions by email to Dave Rodriguez, along with a written solution outline for how you plan to structure the components needed to build the functionality.
 4. After any questions have been answered, code your solution and submit a pull request from your forked version to the `hansoninc` branch with Dave Rodriguez (`@daverodriguez`) and Mike Louviere (`@michaellouviere`) as reviewers.
 
