@@ -37,8 +37,8 @@ export const DashboardPage = () => {
 
   // setFilterValue() is asynchronous, so trying to immediately make UI changes
   // after setting it doesn't work right. It's always a letter behind. Instead,
-  // we use a useEffect() hook to watch for changes on the [filterValue] variable
-  // and update the filtered list that way
+  // we use a useEffect() hook to watch for changes on the filterValue and
+  // availableList variables and trigger an update to the filteredList that way
   useEffect(() => {
     updateFilteredList();
   }, [filterValue, availableList]);
