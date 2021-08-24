@@ -12,8 +12,9 @@ export function ItemList({items, action}: ListProps) {
   return (
     <List>
       {
-        items.map((item, index) =>
-          <Card key={index}
+        items.map(item =>
+          <Card key={item.uid}
+            id={item.uid}
             primary={`${item.manufacturer} ${item.model}`}
             secondary={item.platform}
             tertiary={`S/N: ${item.serial_number}`}

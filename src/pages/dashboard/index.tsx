@@ -40,29 +40,23 @@ export const DashboardPage = () => {
   // we use a useEffect() hook to watch for changes on the [filterValue] variable
   // and update the filtered list that way
   useEffect(() => {
-    if (filterValue === '' || !filterValue) {
-      setFilteredList(availableList);
-    } else {
-      const fuse = new Fuse(availableList, filterOptions);
-      const result = fuse.search(filterValue);
-      setFilteredList(result.map(el => el.item));
-    }
-  }, [filterValue]);
+    updateFilteredList();
+  }, [filterValue, availableList]);
 
   const addToMyList = (e) => {
-    const itemIndex = getItemIndex(e);
+    const itemIndex = getItemIndex(e, availableList);
     if (itemIndex < 0) { return; }
 
     let tmp1 = availableList;
     let movedItem = tmp1.splice(itemIndex, 1);
     setAvailableList(tmp1);
-    onFilterChanged(filterValue);
+    updateFilteredList();
 
     setMyList(myList.concat(movedItem));
   }
 
   const removeFromMyList = (e) => {
-    const itemIndex = getItemIndex(e);
+    const itemIndex = getItemIndex(e, myList);
     if (itemIndex < 0) { return; }
 
     let tmp1 = myList;
@@ -70,14 +64,24 @@ export const DashboardPage = () => {
     setMyList(tmp1);
 
     setAvailableList(availableList.concat(movedItem));
-    onFilterChanged(filterValue);
+    updateFilteredList();
   }
 
-  const getItemIndex = (e) => {
+  const updateFilteredList = () => {
+    if (filterValue === '' || !filterValue) {
+      setFilteredList(availableList);
+    } else {
+      const fuse = new Fuse(availableList, filterOptions);
+      const result = fuse.search(filterValue);
+      setFilteredList(result.map(el => el.item));
+    }
+  }
+
+  const getItemIndex = (e, targetList) => {
     const target = e.target;
     const listItem = target.closest('li');
-    const list = target.closest('ul');
-    return [...list.children].findIndex(el => el === listItem);
+    const itemId = listItem.getAttribute('data-item-id');
+    return targetList.findIndex(el => el.uid === itemId);
   }
 
   return data && (
@@ -98,7 +102,7 @@ export const DashboardPage = () => {
                   variant="contained"
                   size="small"
                   color="primary"
-                  onClick={(e) => addToMyList(e)}
+                  onClick={e => addToMyList(e)}
                 >
                   Add to My List
                 </Button>
@@ -120,7 +124,7 @@ export const DashboardPage = () => {
                   variant="contained"
                   size="small"
                   color="secondary"
-                  onClick={removeFromMyList}
+                  onClick={e => removeFromMyList(e)}
                 >
                   Remove
                 </Button>
