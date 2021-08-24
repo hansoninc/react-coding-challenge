@@ -95,6 +95,11 @@ export const DashboardPage = () => {
         <Grid item xs={12} sm={6}>
           <PanelList title="Available Devices">
             <FilterInput placeholder="Filter Device List" onChange={value => onFilterChanged(value)}/>
+            {filteredList?.length === 0 ?
+              <Box>
+                <h3>There are no matching items</h3>
+              </Box>
+              : null }
             <ItemList
               items={filteredList}
               action={
