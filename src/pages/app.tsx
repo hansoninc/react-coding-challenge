@@ -1,6 +1,6 @@
 import * as React from "react";
 import { Route, withRouter } from "react-router";
-import { DashboardPage } from "./dashboard";
+import { DashboardPage } from "./dashboard/index";
 import { Page } from "./page";
 import { ThemeProvider } from "@material-ui/core/styles";
 import Theme from "../theme";

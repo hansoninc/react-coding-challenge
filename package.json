@@ -36,5 +36,6 @@
         "start": "webpack-dev-server --env.local"
     },
     "dependencies": {
+        "fuse.js": "^6.4.6"
     }
 }
