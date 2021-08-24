@@ -16,7 +16,6 @@ export function FilterInput({placeholder, onChange}: FilterInputProps) {
   }
 
   const handleChange = e => {
-    console.log(e.target.value);
     setValue(e.target.value);
     onChange(e.target.value);
   }
