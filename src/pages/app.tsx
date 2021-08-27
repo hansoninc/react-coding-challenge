@@ -1,9 +1,9 @@
-import * as React from "react";
-import { Route, withRouter } from "react-router";
-import { DashboardPage } from "./dashboard";
-import { Page } from "./page";
-import { ThemeProvider } from "@material-ui/core/styles";
-import Theme from "../theme";
+import * as React from 'react';
+import { Route, withRouter } from 'react-router';
+import { DashboardPage } from '@pages/dashboard';
+import { Page } from '@pages/page';
+import { ThemeProvider } from '@material-ui/core/styles';
+import Theme from '@root/theme';
 
 const AppComponent = () => {
   return (

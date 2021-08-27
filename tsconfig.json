@@ -1,9 +1,11 @@
 {
   "compilerOptions": {
-    "paths": {
-      "*": ["types/*"]
-    },
     "baseUrl": ".",
+    "paths": {
+      "@root/*": ["./src/*"],
+      "@pages/*": ["./src/pages/*"],
+      "@api/*": ["./src/api/*"]
+    },
     "outDir": "./build",
     "target": "ES6",
     "moduleResolution": "node",
@@ -19,16 +21,23 @@
     "esModuleInterop": true,
     "resolveJsonModule": true,
     "jsx": "react",
-    "typeRoots": [
-      "./node_modules/@types",
-      "./@types"
-    ],
+    "typeRoots": ["./node_modules/@types", "./@types"],
     "allowJs": true
   },
-  "include": [
-    "src/**/*"
-  ],
-  "exclude": [
-    "node_modules"
-  ]
+  "include": ["src/**/*"],
+  "exclude": ["node_modules", "dist"]
 }
+
+// {
+//   "compilerOptions": {
+//     "baseUrl": ".",
+//     "paths": {
+//       "@components/*": ["./components/*"],
+//       "@styles/*": ["./styles/*"],
+//       "@services/*": ["services/*"],
+//       "@constants/*": ["constants/*"],
+//       "@public/*": ["public/*"]
+//     }
+//   },
+//   "exclude": ["node_modules", "dist"]
+// }
