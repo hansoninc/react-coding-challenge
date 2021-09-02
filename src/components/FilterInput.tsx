@@ -15,7 +15,7 @@ export function FilterInput({placeholder, onChange}: FilterInputProps) {
     onChange('');
   }
 
-  const handleChange = e => {
+  const updateFilterValue = e => {
     setValue(e.target.value);
     onChange(e.target.value);
   }
@@ -28,7 +28,7 @@ export function FilterInput({placeholder, onChange}: FilterInputProps) {
           id="filter"
           type="text"
           value={value}
-          onChange={(e) => handleChange(e)}
+          onChange={(e) => updateFilterValue(e)}
           endAdornment={
             <InputAdornment position="end">
               <IconButton
