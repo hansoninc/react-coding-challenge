@@ -3,6 +3,7 @@ import { makeStyles } from '@material-ui/core/styles';
 import CssBaseline from '@material-ui/core/CssBaseline';
 import Container from '@material-ui/core/Container';
 
+import PanelList from '../../components/PanelList';
 const drawerWidth = 270;
 
 const useStyles = makeStyles((theme) => ({
@@ -117,6 +118,9 @@ export const Page = (props: React.PropsWithChildren<{}>) => {
       <CssBaseline />
 
       <main id="main-content">
+
+        <PanelList />
+        <PanelList />
         <div className={classes.appBarSpacer} />
         <Container maxWidth="lg" className={classes.container}>
           {props.children}
