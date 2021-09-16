@@ -3,6 +3,13 @@ import { Grid } from "@material-ui/core";
 import Button from "./Button"
 import PropTypes from "prop-types";
 
+
+/**
+ * Output the contents of our card to include the item information and button info
+ * @param item
+ * @param button
+ * @constructor
+ */
 const Card = ({ item, button }) => {
   return (
     <div className="card p-3">
