@@ -5,6 +5,7 @@ module.exports = e => {
   const env = e || {};
 
   return {
+    mode: "development",
     entry: {
       main: "./src/index.tsx"
     },
@@ -29,7 +30,13 @@ module.exports = e => {
     resolve: {
         // Add '.ts', '.tsx', and '.mjs' as resolvable extensions.
         // '.mjs' is used by the graphql library which is a dependency of aws-amplify
-        extensions: [".mjs", ".ts", ".tsx", ".js", ".json"]
+        extensions: [".mjs", ".ts", ".tsx", ".js", ".json"],
+        alias: {
+          components: './src/components/',
+          pages: './src/pages/',
+          api: './src/api/'
+        }
+
     },
 
     module: {
@@ -39,6 +46,14 @@ module.exports = e => {
             {
               test: /\.css$/i,
               use: ['style-loader', 'css-loader'],
+            },
+            {
+              test: /\.scss$/,
+              use: [
+                'style-loader', // creates style nodes from JS strings
+                'css-loader', // translates CSS into CommonJS
+                'sass-loader' // compiles Sass to CSS, using Node Sass by default
+              ],
             },
             {
               test: /\.(png|jpe?g|svg)$/,
