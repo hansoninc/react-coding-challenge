@@ -75,7 +75,7 @@ export const DashboardPage = () => {
   /**
    * If we have a filter value, were looping through all
    * the keys in each availableItem and checking if the value of the key
-   * includes some words or text of the filter input value. If it is, we push it to
+   * includes some words or text of the filter input value. If it does, we push it to
    * a temporary array (foundItems) and then use that to assign setFilteredItems.
    * If there is no filter value it just sets filteredItems to a clone of available items
    * @param value
@@ -83,19 +83,19 @@ export const DashboardPage = () => {
   const filterAvailableDevices = (value) => {
     let foundItems = [];
 
-    if(!value) {
+    if (!value) {
       setFilteredItems([...availableItems]);
     } else {
       availableItems.forEach((item) => {
         let itemFound = false;
         for (let key in item) {
           let itemValue = String(item[key]);
-          if(itemValue && itemValue.toLowerCase().includes(value.toLowerCase())) {
+          if (itemValue && itemValue.toLowerCase().includes(value.toLowerCase())) {
             itemFound = true;
           }
         }
 
-        if(itemFound) {
+        if (itemFound) {
           foundItems.push(item);
         }
       });
@@ -131,20 +131,20 @@ export const DashboardPage = () => {
           <h2>Available Devices</h2>
           <FilterInput filterDevices={filterChanged}/>
           {filteredItems.length ?
-          <List
-            items={filteredItems}
-            button={buttons.addDevice}
-          /> : <div className="alert alert-primary">There are no available devices</div>}
+            <List
+              items={filteredItems}
+              button={buttons.addDevice}
+            /> : <div className="alert alert-primary">There are no available devices</div>}
         </PanelList>
       </Grid>
       <Grid item xs={12} md={6}>
         <PanelList>
           <h2>My Devices</h2>
           {myListItems.length ?
-          <List
-            items={myListItems}
-            button={buttons.removeDevice}
-          /> : <div className="alert alert-primary">You have no checked out devices</div>}
+            <List
+              items={myListItems}
+              button={buttons.removeDevice}
+            /> : <div className="alert alert-primary">You have no checked out devices</div>}
         </PanelList>
       </Grid>
     </Grid>
