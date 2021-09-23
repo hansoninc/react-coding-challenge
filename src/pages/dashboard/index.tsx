@@ -5,18 +5,12 @@ import FilterInput from "../../components/FilterInput";
 import List from "../../components/List";
 import { data } from "../../api/dashboard"; // available devices
 
-// may need to track the available list as well as filtered list
-// so there will be 5 different states we are dealing with
-// may also need state for the filter input value (fliterValue, setFilterValue initial value empty string)
-// can add useEffect to run filterAvailableDevice to run anytime availItems, myitems or filtervalue change run update
 export const DashboardPage = () => {
-  // console.log('this is dashboard -------------------------------------------------');
-  // console.log(data);
-
   const [availableDevices, setAvailableDevices] =
     useState(data) || useState([]);
   const [myDevices, setMyDevices] = useState([]);
   const buttonText = "Add to My List";
+  const allDevices = data;
 
   function handleAvailableListChange(index) {
     // create a copy of our arrays
@@ -27,11 +21,6 @@ export const DashboardPage = () => {
     const removedItem = availableDeviceList.splice(index, 1);
     // add the clicked item to the other array
     const myDeviceListArrayNEW = myDeviceList.concat(removedItem);
-
-    console.log("-------------removedItems-------------------" + index);
-    console.log(removedItem);
-    // console.log('-------------availableDeviceList-------------------' + index)
-    // console.log(availableDeviceList);
 
     // set our new state
     setAvailableDevices(availableDeviceList);
@@ -48,15 +37,28 @@ export const DashboardPage = () => {
     // add the clicked item to the other array
     const availableDeviceListNEW = availableDeviceList.concat(removedItem);
 
-    // myDeviceList.splice(index, 1);
-    console.log("-------------removedItem-------------------" + index);
-    console.log(removedItem);
-    console.log("-------------myDeviceList-------------------" + index);
-    console.log(myDeviceList);
-
     // set our new state
     setMyDevices(myDeviceList);
     setAvailableDevices(availableDeviceListNEW);
+  }
+
+  function handleFilterListInput(value) {
+    let filteringArray = [];
+
+    // generate our new filtered list from allDevices
+    // compare each item against our passed in filtering value
+    allDevices.map((device) => {
+      // grab all of the array values and convert to comma separated sting
+      const deviceValues = Object.values(device).toString().toLowerCase();
+
+      // see if our device has the filtering value present
+      if (deviceValues.includes(value)) {
+        filteringArray.push(device);
+      }
+    });
+
+    //update the state of our available device list with our newly filtered array
+    setAvailableDevices(filteringArray);
   }
 
   return data === null ? null : (
@@ -67,7 +69,7 @@ export const DashboardPage = () => {
 
       <Grid item xs={12} sm={6}>
         <h2>Available Devices</h2>
-        <FilterInput />
+        <FilterInput onFilteringStateChange={handleFilterListInput} />
         <List
           data={availableDevices}
           buttonText={buttonText}
