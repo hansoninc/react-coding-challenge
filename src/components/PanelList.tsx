@@ -2,12 +2,12 @@ import React from "react";
 import List from "./List";
 import FilterInput from "./FilterInput";
 
-function PanelList(){
+function PanelList(props){ 
     return (
         <div className="panelList">
-            <h2>Devices</h2>
+            <h2>{props.name}</h2>
             <FilterInput />
-            <List />
+            <List data={props.data} buttonAction={props.buttonAction}/>
         </div>
     )
 }

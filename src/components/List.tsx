@@ -1,11 +1,12 @@
 import React from "react";
 import Card from "./Card";
 
-function List(){
+function List(props){
     return (
         <div className="list">
-            <h3>List</h3>
-            <Card />
+            {props.data.map((item, index) => (                
+                <Card item={item} buttonAction={props.buttonAction} index={index} />
+            ))}            
         </div>
     )
 }
