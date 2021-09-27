@@ -15,7 +15,7 @@ function Card(props){
                 </ul>
             </Grid>
             <Grid item xs={2}>
-                <Button variant="contained" color="primary">+</Button>
+                <Button variant="contained" color="primary">{props.buttonText}</Button>
             </Grid>
         </Grid>
     )

@@ -42,10 +42,22 @@ export const DashboardPage = () => {
       <h1>Device Dashboard</h1>
       <Grid container spacing={2}>      
         <Grid item xs={6}>
-          <PanelList name="Available Devices" data={data} buttonAction={addSelection}/>
+          <PanelList 
+            name="Available Devices" 
+            data={data} 
+            filterable={true}
+            buttonAction={addSelection} 
+            buttonText="+"
+          />
         </Grid>
         <Grid item xs={6}>
-          <PanelList name="My Devices"  data={selectedData} buttonAction={removeSelection}/>
+          <PanelList 
+            name="My Devices" 
+            data={selectedData} 
+            filterable={false}
+            buttonAction={removeSelection} 
+            buttonText="-"
+          />
         </Grid>      
       </Grid>
     </div>
