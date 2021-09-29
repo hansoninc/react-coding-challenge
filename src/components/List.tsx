@@ -7,14 +7,19 @@ function List(props){
 
     return (
         <div className="list">
-            {props.data.sort((a, b) => a.model.localeCompare(b.model)).sort((a, b) => a.manufacturer.localeCompare(b.manufacturer)).map((item, index) => (                
+            
+            
+            {props.data.filter(
+                    device => device.model.includes(props.filterString)
+                ).sort((a, b) => a.model.localeCompare(b.model)
+                ).sort((a, b) => a.manufacturer.localeCompare(b.manufacturer)
+                ).map((filteredItem) => (
                 <Card 
-                    item={item} 
+                    item={filteredItem} 
                     buttonAction={props.buttonAction} 
                     buttonText={props.buttonText}
-                    index={index} 
                 />
-            ))}            
+            ))}
         </div>
     )
 }

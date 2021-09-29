@@ -5,10 +5,9 @@ import { Grid } from '@material-ui/core';
 function Card(props){
     const item = props.item;
     return (
-        <Grid container onClick={() => props.buttonAction(props.index)}>
+        <Grid container onClick={() => props.buttonAction(item.id)}>
             <Grid item xs={10}>
                 <h4>{item.manufacturer} - {item.model}</h4>
-                {item.index}
                 <ul>
                     <li>{item.platform}</li>
                     <li>{item.serial_number}</li>

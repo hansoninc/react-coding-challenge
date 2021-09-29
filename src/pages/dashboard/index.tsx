@@ -5,7 +5,8 @@ import dashboard from "../../api/dashboard";
 
 export const DashboardPage = () => {
   const [data, setData] = useState([]);
-  const [selectedData, setSelectedData] = useState([]);  
+  const [selectedData, setSelectedData] = useState([]);
+  const [filterString, setFilterString] = useState("");
 
   useEffect(()=>{
     async function fetchData(){
@@ -14,11 +15,22 @@ export const DashboardPage = () => {
     }
     fetchData();
     setSelectedData([]);
+    setFilterString("");
   },[]);
 
-  function addSelection(index){
+  function getIndex(value, arr, prop) {
+    for(var i = 0; i < arr.length; i++) {
+        if(arr[i][prop] === value) {
+            return i;
+        }
+    }
+    return -1;
+  }
+
+  function addSelection(id){
     let list = [...data];
     let selectedList = [...selectedData];
+    let index = getIndex(id, list, 'id');
     //const item = list.find(x=>x.uid === index);
     const item = list.splice(index, 1);
 
@@ -27,15 +39,18 @@ export const DashboardPage = () => {
     setSelectedData( selectedList );
   }
 
-  function removeSelection(index){
+  function removeSelection(id){
     let list = [...data];
-    let selectedList = [...selectedData];    
+    let selectedList = [...selectedData];  
+    let index = getIndex(id, list, 'id');  
     const item = selectedList.splice(index, 1);
 
     list.push(item[0]);
     setData(list);
     setSelectedData( selectedList );
   }
+
+ 
 
   return data === null ? null : (
     <div>
@@ -45,16 +60,17 @@ export const DashboardPage = () => {
           <PanelList 
             name="Available Devices" 
             data={data} 
-            filterable={true}
+            isFiltered={true}
             buttonAction={addSelection} 
             buttonText="+"
+            filterString={filterString}
           />
         </Grid>
         <Grid item xs={6}>
           <PanelList 
             name="My Devices" 
             data={selectedData} 
-            filterable={false}
+            isFiltered={false}
             buttonAction={removeSelection} 
             buttonText="-"
           />
