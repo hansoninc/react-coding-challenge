@@ -6,7 +6,6 @@ import dashboard from "../../api/dashboard";
 export const DashboardPage = () => {
   const [data, setData] = useState([]);
   const [selectedData, setSelectedData] = useState([]);
-  const [filterString, setFilterString] = useState("");
 
   useEffect(()=>{
     async function fetchData(){
@@ -15,7 +14,6 @@ export const DashboardPage = () => {
     }
     fetchData();
     setSelectedData([]);
-    setFilterString("");
   },[]);
 
   function getIndex(value, arr, prop) {
@@ -63,7 +61,6 @@ export const DashboardPage = () => {
             isFiltered={true}
             buttonAction={addSelection} 
             buttonText="+"
-            filterString={filterString}
           />
         </Grid>
         <Grid item xs={6}>

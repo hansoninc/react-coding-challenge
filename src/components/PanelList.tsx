@@ -1,22 +1,22 @@
-import React from "react";
+import React, { useState} from "react";
 import List from "./List";
 import FilterInput from "./FilterInput";
 
 
-//const [filterString, setFilterString] = useState("");
 
-// useEffect(()=>{    
-//     setFilterString("");
-// });
-
-function onFilterChange(text){
-    console.log(text);
-    console.log("filter");
-
-    // setFilterString(text);
-}
 
 function PanelList(props){ 
+
+    const [filterString, setFilterString] = useState("");
+
+
+
+    function onFilterChange(text){
+        console.log(text);
+        console.log("filter");
+
+        setFilterString(text);
+    }
     return (
         <div className="panelList">
             <h2>{props.name}</h2>
@@ -30,7 +30,7 @@ function PanelList(props){
                 data={props.data} 
                 buttonAction={props.buttonAction} 
                 buttonText={props.buttonText}
-                filterString={props.filterString}
+                filterString={filterString}
             />
         </div>
     )
