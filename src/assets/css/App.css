@@ -1,0 +1,186 @@
+.outline-container {
+  display: flex;
+}
+
+.outline {
+  border: 1px solid black;
+  position: relative;
+  padding: 32px;
+  max-width: 500px;
+}
+
+.outline p {
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  margin: 0;
+}
+
+.outline__red {
+  border-color: red;
+  color: red;
+  width: 500px;
+}
+
+.outline__blue {
+  border-color: blue;
+  color: blue;
+}
+
+.outline__pink {
+  border-color: pink;
+  color: pink;
+}
+
+.outline__green {
+  border-color: green;
+  color: green;
+}
+
+/* Actaul Styles */
+
+.dashboard {
+  padding: 4rem;
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.dashboard h1 {
+  width: 100%;
+  padding: 0 4rem;
+  font-size: 38px;
+  font-weight: 700;
+  margin: 2rem 0 0 0;
+}
+
+.dashboard__panel-container {
+  padding: 4rem;
+  width: 50%;
+}
+
+.dashboard__panel {
+  padding: 4rem;
+  background-color: #f1f1f1;
+  border: 1px solid #d3d3d3;
+  border-radius: 10px;
+  width: 100%;
+}
+
+.dashboard_panel h2 {
+  color: #545454;
+}
+
+.panel__header {
+  display: flex;
+}
+
+.panel__header h2 {
+  width: 50%;
+  font-size: 34px;
+}
+
+.panel__filtering-container {
+  width: 50%;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: flex-end;
+}
+
+.panel__filtering input {
+  height: 31px;
+  border: 1px solid #d3d3d3;
+  border-radius: 5px;
+  background-color: #fafafa;
+  padding: .5rem 1rem;
+}
+
+.panel__filtering input:focus-visible {
+  outline: none;
+}
+
+.panel__filtering button {
+  background-color: #6082B6;
+  color: white;
+  padding: .5rem 1rem;
+  border-radius: 5px;
+  border: none;
+  transition: .2s ease all;
+  margin: 0 0 0 1rem;
+}
+
+.panel__filtering button:hover {
+  background-color: #4169E1;
+  cursor: pointer;
+  transition: .2s ease all;
+}
+
+.panel__list {
+  width: 100%;
+}
+
+.list__card {
+  width: 100%;
+  background-color: #fafafa;
+  border-radius: 10px;
+  padding: 2rem;
+  margin: 0 0 2rem 0;
+  display: flex;
+  align-items: center;
+  min-height: 180px;
+  border: 1px solid #d3d3d3;
+}
+
+.list__card:last-child {
+  margin: 0;
+}
+
+.list__disclaimer {
+  font-size: 28px;
+  font-weight: 700;
+  margin: 0;
+  color: #FF5733;
+}
+
+.card__device,
+.card__button {
+  width: 50%;
+}
+
+.card__button {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.card__button button {
+  background-color: #6082B6;
+  color: white;
+  padding: .5rem 1rem;
+  border-radius: 5px;
+  border: none;
+  transition: .2s ease all;
+}
+
+.card__button button:hover {
+  background-color: #4169E1;
+  cursor: pointer;
+  transition: .2s ease all;
+}
+
+.device__manufacturer {
+  margin: 0;
+}
+
+.device__model {
+  font-size: 28px;
+  font-weight: 700;
+  margin: 0;
+}
+
+.device__platform {
+  margin: 0;
+}
+
+.device__serial-number {
+  margin: 1rem 0 0 0;
+}
