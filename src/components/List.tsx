@@ -8,11 +8,6 @@ export default function List({ data, buttonText, onStateChange }) {
     // match by uid
     let itemToMoveIndex = data.map((el) => el.uid).indexOf(id);
 
-    console.log("handle click");
-    console.log(id);
-    console.log(data);
-    console.log("itemToMoveIndex = " + itemToMoveIndex);
-
     onStateChange(itemToMoveIndex);
   };
 
