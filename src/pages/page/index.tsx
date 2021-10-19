@@ -2,6 +2,8 @@ import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import CssBaseline from '@material-ui/core/CssBaseline';
 import Container from '@material-ui/core/Container';
+ 
+
 
 const drawerWidth = 270;
 
@@ -118,7 +120,7 @@ export const Page = (props: React.PropsWithChildren<{}>) => {
 
       <main id="main-content">
         <div className={classes.appBarSpacer} />
-        <Container maxWidth="lg" className={classes.container}>
+        <Container maxWidth="lg" className={classes.container}>          
           {props.children}
         </Container>
       </main>
